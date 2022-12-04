@@ -2,6 +2,7 @@ import * as React from "react";
 import { View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import Main from "./components/main";
 
 function Feed() {
   return (
@@ -24,7 +25,7 @@ const Drawer = createDrawerNavigator();
 function MyDrawer() {
   return (
     <Drawer.Navigator useLegacyImplementation>
-      <Drawer.Screen name="Feed" component={Feed} />
+      <Drawer.Screen name="Main" component={Main} />
       <Drawer.Screen name="Article" component={Article} />
     </Drawer.Navigator>
   );
