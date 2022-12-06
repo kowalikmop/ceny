@@ -1,28 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import axios from "axios";
-
+import { ListItem, Badge} from '@rneui/themed'
 const Main = () => {
+
+  const title = "0%";
+  const subtitle = "ggsgs0%"
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Strona główna</Text>
-    </View>
+    
+<View>
+
+      <ListItem bottomDivider>
+      <Badge value="3" status="success" badgeStyle={{ padding: 16 }} textStyle={{ fontSize: 18 }}/>
+        <ListItem.Content>
+          <ListItem.Title>{title}</ListItem.Title>
+          <ListItem.Subtitle>{subtitle}</ListItem.Subtitle>
+        </ListItem.Content>
+      </ListItem>
+  
+
+</View>
   );
 };
 
 const styles = StyleSheet.create({
-  buttonstyle: {
-    width: 263,
-    height: 40,
-    backgroundColor: "yellow",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 5,
-  },
-  textstyle: {
-    color: "red",
-    fontSize: 18,
-  },
+
 });
 
 export default Main;

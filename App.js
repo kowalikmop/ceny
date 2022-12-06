@@ -4,14 +4,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Main from "./components/main";
 
-function Feed() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Feedeeee Screen</Text>
-    </View>
-  );
-}
-
 function Article() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -25,7 +17,7 @@ const Drawer = createDrawerNavigator();
 function MyDrawer() {
   return (
     <Drawer.Navigator useLegacyImplementation>
-      <Drawer.Screen name="Main" component={Main} />
+      <Drawer.Screen name="Sprawdzanie cen" component={Main} />
       <Drawer.Screen name="Article" component={Article} />
     </Drawer.Navigator>
   );
