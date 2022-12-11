@@ -3,9 +3,9 @@ import { View, Text, StyleSheet } from "react-native";
 import axios from "axios";
 import { ListItem, Badge } from "@rneui/themed";
 
-const Main = () => {
+const Podsumowanie = () => {
   const [data, setData] = useState({
-    Ok: 0,
+    Ok: 10,
     Warning: 0,
     Error: 0,
     Timeout: 0,
@@ -33,15 +33,10 @@ const Main = () => {
     return accumulator + value;
   }, 0);
 
-  console.log(data.Ok.toString());
-  console.log(data.Warning);
-
   const percentOk = (100 * data.Ok) / sum;
   const percentWarning = (100 * data.Warning) / sum;
   const percentError = (100 * data.Error) / sum;
   const percentTimeout = (100 * data.Timeout) / sum;
-
-  console.log(percentOk);
 
   return (
     <View
@@ -111,4 +106,4 @@ const Main = () => {
 
 const styles = StyleSheet.create({});
 
-export default Main;
+export default Podsumowanie;
