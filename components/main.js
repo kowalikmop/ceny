@@ -33,22 +33,33 @@ const Main = () => {
     return accumulator + value;
   }, 0);
 
-  console.log(sum);
+  console.log(data.Ok.toString());
+  console.log(data.Warning);
 
   const percentOk = (100 * data.Ok) / sum;
-  console.log(percentOk.toFixed());
+  const percentWarning = (100 * data.Warning) / sum;
+  const percentError = (100 * data.Error) / sum;
+  const percentTimeout = (100 * data.Timeout) / sum;
+
+  console.log(percentOk);
 
   return (
-    <View>
+    <View
+      style={{
+        color: "white",
+      }}
+    >
       <ListItem bottomDivider>
         <Badge
           value={data.Error.toString()}
           status="error"
-          badgeStyle={{ padding: 16 }}
-          textStyle={{ fontSize: 18 }}
+          badgeStyle={{ width: 70, height: 36 }}
+          textStyle={{ fontSize: 16 }}
         />
         <ListItem.Content>
-          <ListItem.Title>{`${data.Error} %`}</ListItem.Title>
+          <ListItem.Title>{`${
+            percentError ? percentError.toFixed() : 0
+          } %`}</ListItem.Title>
           {/*   <ListItem.Subtitle>{subtitle}</ListItem.Subtitle> */}
         </ListItem.Content>
       </ListItem>
@@ -56,11 +67,13 @@ const Main = () => {
         <Badge
           value={data.Warning.toString()}
           status="warning"
-          badgeStyle={{ padding: 16 }}
-          textStyle={{ fontSize: 18 }}
+          badgeStyle={{ width: 70, height: 36 }}
+          textStyle={{ fontSize: 16 }}
         />
         <ListItem.Content>
-          <ListItem.Title>{`${data.Warning} %`}</ListItem.Title>
+          <ListItem.Title>{`${
+            percentWarning ? percentWarning.toFixed() : 0
+          } %`}</ListItem.Title>
           {/*   <ListItem.Subtitle>{subtitle}</ListItem.Subtitle> */}
         </ListItem.Content>
       </ListItem>
@@ -68,11 +81,13 @@ const Main = () => {
         <Badge
           value={data.Ok.toString()}
           status="success"
-          badgeStyle={{ padding: 16 }}
-          textStyle={{ fontSize: 18 }}
+          badgeStyle={{ width: 70, height: 36 }}
+          textStyle={{ fontSize: 16 }}
         />
         <ListItem.Content>
-          <ListItem.Title>{`${percentOk.toFixed()} %`}</ListItem.Title>
+          <ListItem.Title>{`${
+            percentOk ? percentOk.toFixed() : 0
+          } %`}</ListItem.Title>
           {/*   <ListItem.Subtitle>{subtitle}</ListItem.Subtitle> */}
         </ListItem.Content>
       </ListItem>
@@ -80,11 +95,13 @@ const Main = () => {
         <Badge
           value={data.Timeout.toString()}
           status="primary"
-          badgeStyle={{ padding: 16 }}
-          textStyle={{ fontSize: 18 }}
+          badgeStyle={{ width: 70, height: 36 }}
+          textStyle={{ fontSize: 16 }}
         />
         <ListItem.Content>
-          <ListItem.Title>{`${data.Timeout} %`}</ListItem.Title>
+          <ListItem.Title>{`${
+            percentTimeout ? percentTimeout.toFixed() : 0
+          } %`}</ListItem.Title>
           {/*   <ListItem.Subtitle>{subtitle}</ListItem.Subtitle> */}
         </ListItem.Content>
       </ListItem>
