@@ -4,6 +4,7 @@ import { View, Text, SafeAreaView, StyleSheet, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Podsumowanie from "./components/podsumowanie";
+import Menu from "./components/menu";
 
 function Article() {
   return (
@@ -89,6 +90,9 @@ function MyDrawer() {
     getData();
   }, []);
 
+ // console.log(data[0].NazwaUrl);
+
+
   return (
     <SafeAreaView style={styles.conteiner}>
       <StatusBar
@@ -99,7 +103,12 @@ function MyDrawer() {
       <Drawer.Navigator useLegacyImplementation>
         <Drawer.Screen name="Podsumowanie" component={Podsumowanie} />
         {data.map((item, i) => (
-          <Drawer.Screen name={item.Nazwa} key={i} component={Article} />
+          <Drawer.Screen
+            name={item.Nazwa}
+            url={item.NazwaUrl}
+            key={i}
+            component={Menu}
+          />
         ))}
       </Drawer.Navigator>
     </SafeAreaView>
