@@ -17,15 +17,22 @@ function Article() {
 const Drawer = createDrawerNavigator();
 
 function MyDrawer() {
-  const [data, setData] = useState([
+  const [summary, setSummary] = useState({
+    Ok: 100,
+    Warning: 0,
+    Error: 340,
+    Timeout: 220,
+  });
+
+  const [menu, setMenu] = useState([
     {
       Nazwa: "Egzotyka",
       NazwaUrl: "dreamliner",
       Opis: "Dreamliner",
       Statusy: {
-        Ok: 159,
+        Ok: 157,
         Warning: 0,
-        Error: 0,
+        Error: 1,
         Timeout: 0,
       },
     },
@@ -34,9 +41,9 @@ function MyDrawer() {
       NazwaUrl: "ogolne",
       Opis: "",
       Statusy: {
-        Ok: 108,
+        Ok: 96,
         Warning: 0,
-        Error: 0,
+        Error: 1,
         Timeout: 0,
       },
     },
@@ -56,7 +63,7 @@ function MyDrawer() {
       NazwaUrl: "lipiec-2023",
       Opis: "",
       Statusy: {
-        Ok: 33,
+        Ok: 34,
         Warning: 0,
         Error: 0,
         Timeout: 0,
@@ -80,9 +87,10 @@ function MyDrawer() {
       const { data } = await axios.get(
         `https://sprawdzanie-cen.rainbowtours.pl/api/sprawdzanie-cen-api/menu`
       );
-      setData(data.Menu);
+      setSummary(data.Podsumowanie);
+      setMenu(data[0].Menu);
     } catch (err) {
-      console.log("Problem z API Menu " + err);
+      console.log("Problem z API " + err);
     }
   };
 
@@ -90,8 +98,7 @@ function MyDrawer() {
     getData();
   }, []);
 
- // console.log(data[0].NazwaUrl);
-
+  // console.log(data[0].NazwaUrl);
 
   return (
     <SafeAreaView style={styles.conteiner}>
@@ -101,13 +108,16 @@ function MyDrawer() {
         // translucent={true}
       />
       <Drawer.Navigator useLegacyImplementation>
-        <Drawer.Screen name="Podsumowanie" component={Podsumowanie} />
-        {data.map((item, i) => (
+        <Drawer.Screen
+          name="Ceny"
+          component={Podsumowanie}
+        />
+        {menu.map((item, i) => (
           <Drawer.Screen
             name={item.Nazwa}
-            url={item.NazwaUrl}
             key={i}
             component={Menu}
+            //  initialParams={{ url: item.NazwaUrl }}
           />
         ))}
       </Drawer.Navigator>

@@ -15,7 +15,7 @@ const Menu = (props) => {
       }}
     >
       <ListItem bottomDivider>
-           <ListItem.Content>
+        <ListItem.Content>
           <ListItem.Title>{props.route.name}</ListItem.Title>
           {/*   <ListItem.Subtitle>{subtitle}</ListItem.Subtitle> */}
         </ListItem.Content>
