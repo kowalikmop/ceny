@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import axios from "axios";
-import { ListItem, Badge } from "@rneui/themed";
-import { Avatar } from "@rneui/themed";
+import { ListItem, Badge, Icon } from "@rneui/themed";
 
 const Podsumowanie = (props) => {
   const [summary, setSummary] = useState({
@@ -101,16 +100,18 @@ const Podsumowanie = (props) => {
   return (
     <View>
       <ListItem bottomDivider>
-        <Avatar
-          size={50}
-          rounded
-          source={{
-            uri:
-              "https://img.icons8.com/external-others-inmotus-design/67/null/external-Chart-analysis-others-inmotus-design-2.png",
-          }}
+        <Icon
+          reverse
+          name="stats-chart"
+          type="ionicon"
+          color="#FFFFFF"
+          // size={30}
+          iconStyle={{ color: "#000000" }}
         />
         <ListItem.Content>
-          <ListItem.Title style={styles.itemHeaderTitle}>Podsumowanie</ListItem.Title>
+          <ListItem.Title style={styles.itemHeaderTitle}>
+            Podsumowanie
+          </ListItem.Title>
           {/*   <ListItem.Subtitle>{subtitle}</ListItem.Subtitle> */}
         </ListItem.Content>
       </ListItem>
