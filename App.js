@@ -6,14 +6,6 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Podsumowanie from "./components/podsumowanie";
 import Menu from "./components/menu";
 
-function Article() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Articleeeee Screen</Text>
-    </View>
-  );
-}
-
 const Drawer = createDrawerNavigator();
 
 function MyDrawer() {
