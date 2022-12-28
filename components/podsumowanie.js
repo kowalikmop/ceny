@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import axios from "axios";
 import { ListItem, Badge, Icon } from "@rneui/themed";
+import HeaderTitle from "./headerTitle";
+import SumListItem from "./sumListItem";
 
 const Podsumowanie = (props) => {
   const [summary, setSummary] = useState({
@@ -98,81 +100,14 @@ const Podsumowanie = (props) => {
   const percentTimeout = (100 * summary.Timeout) / sum;
 
   return (
-    <View>
-      <ListItem bottomDivider>
-        <Icon
-          reverse
-          name="stats-chart"
-          type="ionicon"
-          color="#FFFFFF"
-          // size={30}
-          iconStyle={{ color: "#000000" }}
-        />
-        <ListItem.Content>
-          <ListItem.Title style={styles.itemHeaderTitle}>
-            {props.route.name}
-          </ListItem.Title>
-          {/*   <ListItem.Subtitle>{subtitle}</ListItem.Subtitle> */}
-        </ListItem.Content>
-      </ListItem>
-
-      <ListItem bottomDivider>
-        <Badge
-          value={summary.Error.toString()}
-          status="error"
-          badgeStyle={{ width: 40, height: 32 }}
-          textStyle={{ fontSize: 12 }}
-          containerStyle={{ marginRight: -10 }}
-        />
-        <ListItem.Content>
-          <ListItem.Title style={styles.itemTitle}>{`${
-            percentError ? percentError.toFixed() : 0
-          } %`}</ListItem.Title>
-          {/*   <ListItem.Subtitle>{subtitle}</ListItem.Subtitle> */}
-        </ListItem.Content>
-
-        <Badge
-          value={summary.Warning.toString()}
-          status="warning"
-          badgeStyle={{ width: 40, height: 32 }}
-          textStyle={{ fontSize: 12 }}
-          containerStyle={{ marginRight: -10 }}
-        />
-        <ListItem.Content>
-          <ListItem.Title style={styles.itemTitle}>{`${
-            percentWarning ? percentWarning.toFixed() : 0
-          } %`}</ListItem.Title>
-          {/*   <ListItem.Subtitle>{subtitle}</ListItem.Subtitle> */}
-        </ListItem.Content>
-
-        <Badge
-          value={summary.Ok.toString()}
-          status="success"
-          badgeStyle={{ width: 40, height: 32 }}
-          textStyle={{ fontSize: 12 }}
-          containerStyle={{ marginRight: -10 }}
-        />
-        <ListItem.Content>
-          <ListItem.Title style={styles.itemTitle}>{`${
-            percentOk ? percentOk.toFixed() : 0
-          } %`}</ListItem.Title>
-          {/*   <ListItem.Subtitle>{subtitle}</ListItem.Subtitle> */}
-        </ListItem.Content>
-        <Badge
-          value={summary.Timeout.toString()}
-          status="primary"
-          badgeStyle={{ width: 40, height: 32 }}
-          textStyle={{ fontSize: 12 }}
-          containerStyle={{ marginRight: -10 }}
-        />
-        <ListItem.Content>
-          <ListItem.Title style={styles.itemTitle}>{`${
-            percentTimeout ? percentTimeout.toFixed() : 0
-          } %`}</ListItem.Title>
-          {/*   <ListItem.Subtitle>{subtitle}</ListItem.Subtitle> */}
-        </ListItem.Content>
-      </ListItem>
-    </View>
+    <ScrollView>
+      {menu.map((item, i) => (
+        <>
+        <HeaderTitle title={item.Nazwa} key={i} />
+        <SumListItem statusvalue={"88"} percentvalue={"88"} key={item.NazwaUrl}/>
+        </>
+      ))}
+    </ScrollView>
   );
 };
 
