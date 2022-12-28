@@ -100,16 +100,13 @@ function MyDrawer() {
         // translucent={true}
       />
       <Drawer.Navigator useLegacyImplementation>
-        <Drawer.Screen
-          name="Ceny"
-          component={Podsumowanie}
-        />
+        <Drawer.Screen name="Ceny" component={Podsumowanie} />
         {menu.map((item, i) => (
           <Drawer.Screen
             name={item.Nazwa}
             key={i}
-            component={Menu}
-            //  initialParams={{ url: item.NazwaUrl }}
+            component={Podsumowanie}
+           initialParams={{ url: item.NazwaUrl }}
           />
         ))}
       </Drawer.Navigator>

@@ -85,7 +85,7 @@ const Podsumowanie = (props) => {
     getData();
   }, []);
 
-  console.log(props.route.name);
+  console.log(props);
 
   const values = Object.values(summary);
   const sum = values.reduce((accumulator, value) => {
@@ -110,7 +110,7 @@ const Podsumowanie = (props) => {
         />
         <ListItem.Content>
           <ListItem.Title style={styles.itemHeaderTitle}>
-            Podsumowanie
+            {props.route.name}
           </ListItem.Title>
           {/*   <ListItem.Subtitle>{subtitle}</ListItem.Subtitle> */}
         </ListItem.Content>
