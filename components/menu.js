@@ -1,13 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import axios from "axios";
-import { ListItem, Badge } from "@rneui/themed";
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import { ListItem } from "@rneui/themed";
 
 const Menu = (props) => {
-  const [data, setData] = useState("hhh");
-
-  console.log(props);
-
   return (
     <View
       style={{
