@@ -73,7 +73,8 @@ function MyDrawer() {
       },
     },
   ]);
-
+  {
+    /* 
   const getData = async () => {
     try {
       const { data } = await axios.get(
@@ -89,7 +90,7 @@ function MyDrawer() {
   useEffect(() => {
     getData();
   }, []);
-
+*/}
   // console.log(data[0].NazwaUrl);
 
   return (

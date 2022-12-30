@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet } from "react-native";
-import { ListItem, Badge, Icon } from "@rneui/themed";
+import { ListItem, Icon } from "@rneui/themed";
 
 const headerTitle = (props) => {
   return (
-    <ListItem bottomDivider containerStyle={{ height: 60, marginTop: 10 }}>
+    <ListItem bottomDivider containerStyle={{ height: 58, marginTop: 10 }}>
       <Icon
         reverse
         name="stats-chart"

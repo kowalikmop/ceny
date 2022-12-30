@@ -1,31 +1,32 @@
 import { View, Text, StyleSheet } from "react-native";
-import { ListItem, Badge, Icon } from "@rneui/themed";
+import { ListItem, Badge } from "@rneui/themed";
 
-const sumListItem = ({ statusvalue, percentvalue }) => {
+const sumListItem = ({ statusvalue, percentvalue, status }) => {
   return (
-    <ListItem bottomDivider>
+    <>
       <Badge
         value={statusvalue.toString()}
-        status="error"
+        status={status}
         badgeStyle={{ width: 40, height: 32 }}
         textStyle={{ fontSize: 12 }}
         containerStyle={{ marginRight: -10 }}
       />
       <ListItem.Content>
         <ListItem.Title style={styles.itemTitle}>
-          {/*{`${
+          {`${
           percentvalue ? percentvalue.toFixed() : 0
-        } %`}*/}
+        } %`}
         </ListItem.Title>
         {/*   <ListItem.Subtitle>{subtitle}</ListItem.Subtitle> */}
       </ListItem.Content>
-    </ListItem>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
   itemTitle: {
     fontSize: 12,
+    paddingLeft: 15,
   },
 });
 

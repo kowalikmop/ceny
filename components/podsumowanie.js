@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import axios from "axios";
-import { ListItem, Badge, Icon } from "@rneui/themed";
+import { ListItem } from "@rneui/themed";
 import HeaderTitle from "./headerTitle";
 import SumListItem from "./sumListItem";
 
@@ -53,9 +53,9 @@ const Podsumowanie = (props) => {
       Opis: "",
       Statusy: {
         Ok: 34,
-        Warning: 0,
-        Error: 0,
-        Timeout: 0,
+        Warning: 3,
+        Error: 6,
+        Timeout: 9,
       },
     },
     {
@@ -64,13 +64,14 @@ const Podsumowanie = (props) => {
       Opis: "",
       Statusy: {
         Ok: 6,
-        Warning: 0,
-        Error: 0,
-        Timeout: 0,
+        Warning: 3,
+        Error: 6,
+        Timeout: 1,
       },
     },
   ]);
-
+  {
+    /* 
   const getData = async () => {
     try {
       const { summary } = await axios.get(
@@ -86,8 +87,9 @@ const Podsumowanie = (props) => {
   useEffect(() => {
     getData();
   }, []);
-
-  console.log(props);
+*/
+  }
+  // console.log(props);
 
   const values = Object.values(summary);
   const sum = values.reduce((accumulator, value) => {
@@ -103,8 +105,34 @@ const Podsumowanie = (props) => {
     <ScrollView>
       {menu.map((item, i) => (
         <>
-        <HeaderTitle title={item.Nazwa} key={i} />
-        <SumListItem statusvalue={"88"} percentvalue={"88"} key={item.NazwaUrl}/>
+          <HeaderTitle title={item.Nazwa} key={i} />
+          <ListItem bottomDivider containerStyle={{ height: 54 }}>
+            <SumListItem
+              statusvalue={item.Statusy.Error}
+              percentvalue={percentError}
+              status={"error"}
+              key={item.NazwaUrl}
+            />
+
+            <SumListItem
+              statusvalue={item.Statusy.Warning}
+              percentvalue={percentWarning}
+              status={"warning"}
+              key={item.NazwaUrl}
+            />
+            <SumListItem
+              statusvalue={item.Statusy.Ok}
+              percentvalue={percentOk}
+              status={"success"}
+              key={item.NazwaUrl}
+            />
+            <SumListItem
+              statusvalue={item.Statusy.Timeout}
+              percentvalue={percentTimeout}
+              status={"primary"}
+              key={item.NazwaUrl}
+            />
+          </ListItem>
         </>
       ))}
     </ScrollView>
