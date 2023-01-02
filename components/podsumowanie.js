@@ -7,10 +7,10 @@ import SumListItem from "./sumListItem";
 
 const Podsumowanie = (props) => {
   const [summary, setSummary] = useState({
-    Ok: 100,
-    Warning: 0,
-    Error: 340,
-    Timeout: 220,
+    Ok: 30,
+    Warning: 10,
+    Error: 10,
+    Timeout: 10,
   });
 
   const [menu, setMenu] = useState([
@@ -19,10 +19,10 @@ const Podsumowanie = (props) => {
       NazwaUrl: "dreamliner",
       Opis: "Dreamliner",
       Statusy: {
-        Ok: 157,
-        Warning: 0,
-        Error: 1,
-        Timeout: 0,
+        Ok: 2,
+        Warning: 2,
+        Error: 2,
+        Timeout: 2,
       },
     },
     {
@@ -91,50 +91,89 @@ const Podsumowanie = (props) => {
   }
   // console.log(props);
 
-  const values = Object.values(summary);
-  const sum = values.reduce((accumulator, value) => {
+  const valuesSum = Object.values(summary);
+  const sumValue = valuesSum.reduce((accumulator, value) => {
     return accumulator + value;
   }, 0);
 
-  const percentOk = (100 * summary.Ok) / sum;
-  const percentWarning = (100 * summary.Warning) / sum;
-  const percentError = (100 * summary.Error) / sum;
-  const percentTimeout = (100 * summary.Timeout) / sum;
-
   return (
     <ScrollView>
-      {menu.map((item, i) => (
-        <>
-          <HeaderTitle title={item.Nazwa} key={i} />
-          <ListItem bottomDivider containerStyle={{ height: 54 }}>
-            <SumListItem
-              statusvalue={item.Statusy.Error}
-              percentvalue={percentError}
-              status={"error"}
-              key={item.NazwaUrl}
+      {menu.map((item, i) => {
+        const valuesSum = Object.values(item.Statusy);
+        const sumValue = valuesSum.reduce((accumulator, value) => {
+          return accumulator + value;
+        }, 0);
+        console.log(sumValue);
+        return (
+          <>
+            <HeaderTitle
+              title={item.Nazwa}
+              key={i}
+              backgroundColor={"#FFFFFF"}
+              isIcon={false}
             />
+            <ListItem bottomDivider containerStyle={{ height: 54 }}>
+              <SumListItem
+                value={item.Statusy.Error}
+                sumValue={sumValue}
+                status={"error"}
+                key={item.NazwaUrl}
+              />
 
-            <SumListItem
-              statusvalue={item.Statusy.Warning}
-              percentvalue={percentWarning}
-              status={"warning"}
-              key={item.NazwaUrl}
-            />
-            <SumListItem
-              statusvalue={item.Statusy.Ok}
-              percentvalue={percentOk}
-              status={"success"}
-              key={item.NazwaUrl}
-            />
-            <SumListItem
-              statusvalue={item.Statusy.Timeout}
-              percentvalue={percentTimeout}
-              status={"primary"}
-              key={item.NazwaUrl}
-            />
-          </ListItem>
-        </>
-      ))}
+              <SumListItem
+                value={item.Statusy.Warning}
+                sumValue={sumValue}
+                status={"warning"}
+                key={item.NazwaUrl}
+              />
+              <SumListItem
+                value={item.Statusy.Ok}
+                sumValue={sumValue}
+                status={"success"}
+                key={item.NazwaUrl}
+              />
+              <SumListItem
+                value={item.Statusy.Timeout}
+                sumValue={sumValue}
+                status={"primary"}
+                key={item.NazwaUrl}
+              />
+            </ListItem>
+          </>
+        );
+      })}
+
+      <HeaderTitle
+        title={"Podsumowanie"}
+        backgroundColor={"#D6EAF8"}
+        isIcon={true}
+      />
+      <ListItem
+        bottomDivider
+        containerStyle={{ height: 54, backgroundColor: "#D6EAF8" }}
+      >
+        <SumListItem
+          sumValue={sumValue}
+          value={summary.Error}
+          status={"error"}
+        />
+
+        <SumListItem
+          sumValue={sumValue}
+          value={summary.Warning}
+          status={"warning"}
+        />
+        <SumListItem
+          sumValue={sumValue}
+          value={summary.Ok}
+          status={"success"}
+        />
+        <SumListItem
+          sumValue={sumValue}
+          value={summary.Timeout}
+          status={"primary"}
+        />
+      </ListItem>
     </ScrollView>
   );
 };

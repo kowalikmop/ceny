@@ -1,21 +1,26 @@
 import { View, Text, StyleSheet } from "react-native";
 import { ListItem, Icon } from "@rneui/themed";
 
-const headerTitle = (props) => {
+const headerTitle = ({ title, backgroundColor, isIcon }) => {
   return (
-    <ListItem bottomDivider containerStyle={{ height: 58, marginTop: 10 }}>
-      <Icon
-        reverse
-        name="stats-chart"
-        type="ionicon"
-        color="#FFFFFF"
-        // size={30}
-        iconStyle={{ color: "#000000" }}
-      />
+    <ListItem
+      bottomDivider
+      containerStyle={{ height: 58, marginTop: 6, backgroundColor }}
+    >
+      {isIcon ? (
+        <Icon
+          reverse
+          name="stats-chart"
+          type="ionicon"
+          color={backgroundColor}
+          // size={30}
+          iconStyle={{ color: "#000000" }}
+        />
+      ) : (
+        false
+      )}
       <ListItem.Content>
-        <ListItem.Title style={styles.itemHeaderTitle}>
-          {props.title}
-        </ListItem.Title>
+        <ListItem.Title style={styles.itemHeaderTitle}>{title}</ListItem.Title>
         {/*   <ListItem.Subtitle>{subtitle}</ListItem.Subtitle> */}
       </ListItem.Content>
     </ListItem>

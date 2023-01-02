@@ -1,11 +1,13 @@
 import { View, Text, StyleSheet } from "react-native";
 import { ListItem, Badge } from "@rneui/themed";
 
-const sumListItem = ({ statusvalue, percentvalue, status }) => {
+const sumListItem = ({ sumValue, value, status }) => {
+  const percent = (100 * value) / sumValue;
+
   return (
     <>
       <Badge
-        value={statusvalue.toString()}
+        value={value}
         status={status}
         badgeStyle={{ width: 40, height: 32 }}
         textStyle={{ fontSize: 12 }}
@@ -13,9 +15,7 @@ const sumListItem = ({ statusvalue, percentvalue, status }) => {
       />
       <ListItem.Content>
         <ListItem.Title style={styles.itemTitle}>
-          {`${
-          percentvalue ? percentvalue.toFixed() : 0
-        } %`}
+          {`${percent ? percent.toFixed() : 0} %`}
         </ListItem.Title>
         {/*   <ListItem.Subtitle>{subtitle}</ListItem.Subtitle> */}
       </ListItem.Content>
