@@ -3,7 +3,7 @@ import axios from "axios";
 import { View, Text, SafeAreaView, StyleSheet, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import Podsumowanie from "./components/podsumowanie";
+import Summary from "./components/summary";
 import Menu from "./components/menu";
 
 const Drawer = createDrawerNavigator();
@@ -90,7 +90,8 @@ function MyDrawer() {
   useEffect(() => {
     getData();
   }, []);
-*/}
+*/
+  }
   // console.log(data[0].NazwaUrl);
 
   return (
@@ -101,7 +102,7 @@ function MyDrawer() {
         // translucent={true}
       />
       <Drawer.Navigator useLegacyImplementation>
-        <Drawer.Screen name="Podsumowanie" component={Podsumowanie} />
+        <Drawer.Screen name="Podsumowanie" component={Summary} />
         {menu.map((item, i) => (
           <Drawer.Screen
             name={item.Nazwa}

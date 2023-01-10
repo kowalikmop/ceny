@@ -5,7 +5,7 @@ import { ListItem } from "@rneui/themed";
 import HeaderTitle from "./headerTitle";
 import SumListItem from "./sumListItem";
 
-const Podsumowanie = (props) => {
+const Summary = (props) => {
   const [summary, setSummary] = useState({
     Ok: 30,
     Warning: 10,
@@ -187,4 +187,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Podsumowanie;
+export default Summary;
