@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Summary from "./components/summary";
 import Menu from "./components/menu";
+import Details from "./components/details";
 
 const Drawer = createDrawerNavigator();
 
@@ -107,7 +108,7 @@ function MyDrawer() {
           <Drawer.Screen
             name={item.Nazwa}
             key={i}
-            component={Menu}
+            component={Details}
             initialParams={{ url: item.NazwaUrl }}
           />
         ))}
