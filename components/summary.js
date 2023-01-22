@@ -103,7 +103,7 @@ const Summary = (props) => {
         const sumValue = valuesSum.reduce((accumulator, value) => {
           return accumulator + value;
         }, 0);
-        console.log(sumValue);
+        // console.log(sumValue);
         return (
           <>
             <HeaderTitle
