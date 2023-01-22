@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Summary from "./components/summary";
 import Menu from "./components/menu";
-import Details from "./components/details";
+import Details from "./components/detailsData";
 
 const Drawer = createDrawerNavigator();
 
