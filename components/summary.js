@@ -108,7 +108,7 @@ const Summary = (props) => {
           <>
             <HeaderTitle
               title={item.Nazwa}
-              key={i}
+              key={item.NazwaUrl}
               backgroundColor={"#FFFFFF"}
               isIcon={false}
             />

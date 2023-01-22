@@ -110,7 +110,7 @@ const DetailsData = (props) => {
   return (
     <ScrollView>
       {details.map((item, i) => (
-        <Test item={item} key={i} />
+        <Test item={item} key={item.ProduktID} />
       ))}
     </ScrollView>
   );
