@@ -56,10 +56,12 @@ const Details = ({ item }) => {
               0,
               10
             )}`}</ListItem.Title>
-            <ListItem.Title>{`Od kiedy błąd: ${item.OdKiedyBlad.slice(
-              0,
-              10
-            )}`}</ListItem.Title>
+            {item.OdKiedyBlad && (
+              <ListItem.Title>{`Od kiedy błąd: ${item.OdKiedyBlad.slice(
+                0,
+                10
+              )}`}</ListItem.Title>
+            )}
           </ListItem.Content>
           <ListItem.Chevron />
         </ListItem>

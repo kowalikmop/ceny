@@ -7,7 +7,7 @@ import SumListItem from "./sumListItem";
 
 const Summary = (props) => {
   const [summary, setSummary] = useState({
-    Ok: 30,
+    Ok: 50,
     Warning: 10,
     Error: 10,
     Timeout: 10,
@@ -70,26 +70,28 @@ const Summary = (props) => {
       },
     },
   ]);
-  {
-    /* 
-  const getData = async () => {
-    try {
-      const { summary } = await axios.get(
-        `https://sprawdzanie-cen.rainbowtours.pl/api/sprawdzanie-cen-api/menu`
-      );
-      setSummary(summary.Podsumowanie);
-      setMenu(menu.Menu);
-    } catch (err) {
-      console.log("Problem z API " + err);
-    }
-  };
 
-  useEffect(() => {
-    getData();
-  }, []);
-*/
+  {
+    const getData = async () => {
+      try {
+        const { data } = await axios.get(
+          `https://sprawdzanie-cen.rainbowtours.pl/api/sprawdzanie-cen-api/menu`
+        );
+        setSummary(data.Podsumowanie);
+        setMenu(data.Menu);
+        // console.log(data.Menu);
+        // console.log(data.files[1].name);
+      } catch (err) {
+        console.log("Problem z API " + err);
+      }
+    };
+
+    useEffect(() => {
+      getData();
+    }, []);
   }
-  // console.log(props);
+
+  //console.log(summary);
 
   const valuesSum = Object.values(summary);
   const sumValue = valuesSum.reduce((accumulator, value) => {
@@ -103,7 +105,7 @@ const Summary = (props) => {
         const sumValue = valuesSum.reduce((accumulator, value) => {
           return accumulator + value;
         }, 0);
-        // console.log(sumValue);
+        //  console.log(item.NazwaUrl);
         return (
           <>
             <HeaderTitle
@@ -117,26 +119,26 @@ const Summary = (props) => {
                 value={item.Statusy.Error}
                 sumValue={sumValue}
                 status={"error"}
-                key={item.NazwaUrl}
+                key={item.NazwaUrl + "a"}
               />
 
               <SumListItem
                 value={item.Statusy.Warning}
                 sumValue={sumValue}
                 status={"warning"}
-                key={item.NazwaUrl}
+                key={item.NazwaUrl + "b"}
               />
               <SumListItem
                 value={item.Statusy.Ok}
                 sumValue={sumValue}
                 status={"success"}
-                key={item.NazwaUrl}
+                key={item.NazwaUrl + "c"}
               />
               <SumListItem
                 value={item.Statusy.Timeout}
                 sumValue={sumValue}
                 status={"primary"}
-                key={item.NazwaUrl}
+                key={item.NazwaUrl + "d"}
               />
             </ListItem>
           </>

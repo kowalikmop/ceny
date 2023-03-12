@@ -24,7 +24,7 @@ function MyDrawer() {
       Opis: "Dreamliner",
       Statusy: {
         Ok: 157,
-        Warning: 0,
+        Warning: 5,
         Error: 1,
         Timeout: 0,
       },
@@ -74,15 +74,16 @@ function MyDrawer() {
       },
     },
   ]);
-  {
-    /* 
+
   const getData = async () => {
     try {
       const { data } = await axios.get(
         `https://sprawdzanie-cen.rainbowtours.pl/api/sprawdzanie-cen-api/menu`
       );
-      setSummary(data.Podsumowanie);
-      setMenu(data[0].Menu);
+      //setSummary(data.Podsumowanie);
+      setMenu(data.Menu);
+     // console.log(data.Menu);
+      // console.log(data.files[1].name);
     } catch (err) {
       console.log("Problem z API " + err);
     }
@@ -91,9 +92,8 @@ function MyDrawer() {
   useEffect(() => {
     getData();
   }, []);
-*/
-  }
-  // console.log(data[0].NazwaUrl);
+
+  //console.log(data[0].NazwaUrl);
 
   return (
     <SafeAreaView style={styles.conteiner}>
