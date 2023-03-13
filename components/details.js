@@ -8,6 +8,10 @@ const Details = ({ item }) => {
 
   const handlePress = () => setExpanded(!expanded);
 
+  const is = item.Status;
+
+  console.log(is);
+
   return (
     <ScrollView>
       <ListItem.Accordion
@@ -36,6 +40,7 @@ const Details = ({ item }) => {
         onPress={() => {
           setExpanded(!expanded);
         }}
+        containerStyle={[item.Status === 'ERROR' && styles.content]}
       >
         <ListItem bottomDivider>
           <ListItem.Content>
@@ -73,6 +78,9 @@ const Details = ({ item }) => {
 const styles = StyleSheet.create({
   itemTitle: {
     marginBottom: 10,
+  },
+  content: {
+    backgroundColor: "#FF7F50",
   },
 });
 
