@@ -41,7 +41,10 @@ const Details = ({ item }) => {
           item.Status === "WARNING" && styles.yellow,
         ]}
       >
-        <ListItem bottomDivider>
+        <ListItem bottomDivider   containerStyle={[
+          item.Status === "ERROR" && styles.red,
+          item.Status === "WARNING" && styles.yellow,
+        ]}>
           <ListItem.Content>
             <ListItem.Title>{`Termin wyjazdu: ${item.TerminWyjazdu.slice(
               0,
