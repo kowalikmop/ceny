@@ -26,9 +26,9 @@ const DetailsData = ({ route }) => {
   useEffect(() => {
     getData();
   }, []);
-  console.log(details);
+  // console.log(details);
   return (
-    details === [] ? <Empty /> :
+    details.length === 0 ? <Empty /> :
     <ScrollView>
       {details.map((item, i) => (
         <Detail item={item} key={item.ProduktID} />

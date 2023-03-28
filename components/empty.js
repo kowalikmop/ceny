@@ -5,21 +5,20 @@ import { ListItem, Icon } from "@rneui/themed";
 
 const Empty = () => {
   return (
-    <ScrollView>
-      <Text>Brak wyników</Text>
-    </ScrollView>
+    <View style={styles.view}>
+      <Text style={styles.text}>Brak wyników</Text>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  itemTitle: {
-    marginBottom: 10,
+  view: {
+    display: "flex",
+    alignItems: "center",
+    marginTop: 20,
   },
-  red: {
-    backgroundColor: "#FF7F50",
-  },
-  yellow: {
-    backgroundColor: "#FFFF00",
+  text: {
+    fontSize: 18,
   },
 });
 
