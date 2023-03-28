@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import axios from "axios";
 import Detail from "./details";
+import Empty from "./empty";
 
 const DetailsData = ({ route }) => {
   const { url } = route.params;
@@ -25,8 +26,9 @@ const DetailsData = ({ route }) => {
   useEffect(() => {
     getData();
   }, []);
-
+  console.log(details);
   return (
+    details === [] ? <Empty /> :
     <ScrollView>
       {details.map((item, i) => (
         <Detail item={item} key={item.ProduktID} />
