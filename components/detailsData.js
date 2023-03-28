@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import axios from "axios";
 import Detail from "./details";
 import Empty from "./empty";
+import Loader from "./loader";
 
 const DetailsData = ({ route }) => {
   const { url } = route.params;
@@ -27,8 +28,9 @@ const DetailsData = ({ route }) => {
     getData();
   }, []);
   // console.log(details);
-  return (
-    details.length === 0 ? <Empty /> :
+  return details.length === 0 ? (
+    <Loader />
+  ) : (
     <ScrollView>
       {details.map((item, i) => (
         <Detail item={item} key={item.ProduktID} />
