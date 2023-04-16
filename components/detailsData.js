@@ -9,6 +9,7 @@ const DetailsData = ({ route }) => {
   const { url } = route.params;
   console.log(url);
   const [details, setDetails] = useState([]);
+  const [timePassed, settimePassed] = useState(false);
 
   const getData = async () => {
     try {
@@ -26,17 +27,26 @@ const DetailsData = ({ route }) => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [route]);
+
+  const timer = setTimeout(() => {
+    settimePassed(true);
+  }, 20000);
+
   // console.log(details);
-  return details.length === 0 ? (
-    <Loader />
-  ) : (
-    <ScrollView>
-      {details.map((item, i) => (
-        <Detail item={item} key={item.ProduktID} />
-      ))}
-    </ScrollView>
-  );
+  if (timePassed && details.length === 0) {
+    return <Empty />;
+  } else {
+    return details.length === 0 ? (
+      <Loader />
+    ) : (
+      <ScrollView>
+        {details.map((item, i) => (
+          <Detail item={item} key={item.ProduktID} />
+        ))}
+      </ScrollView>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
